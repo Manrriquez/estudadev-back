@@ -13,7 +13,7 @@ services:
         MYSQL_ROOT_HOST: '%'
         MYSQL_TCP_PORT: 3308
       ports:
-        - 33308:3308
+        - "33308:3308"
       expose:
         - 33308
       networks:
@@ -21,15 +21,13 @@ services:
     estudadev:
         image: manrriquez/estudadev
         restart: always
-        build: ./estudadev
-        working_dir: /estudadev
         environment:
           TZ: America/Sao_Paulo
           SPRING.DATASOURCE.URL: jdbc:mysql://db:3308/estudadevdb?allowPublicKeyRetrieval=true&rewriteBatchedStatements=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8&useLegacyDatetimeCode=true&createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
           SPRING.DATASOURCE.USERNAME: root
           SPRING.DATASOURCE.PASSWORD: admin12
         ports:
-          - 80:80
+          - "8080:8080"
         command: mvn spring-boot:run
         depends_on:
           - db
