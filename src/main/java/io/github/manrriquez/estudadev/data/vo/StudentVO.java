@@ -1,11 +1,4 @@
 package io.github.manrriquez.estudadev.data.vo;
-
-import io.github.manrriquez.estudadev.models.StudentModel;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Objects;
 
 public class StudentVO {
@@ -71,8 +64,8 @@ public class StudentVO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        StudentModel that = (StudentModel) o;
-        return id.equals(that.id) && firstName.equals(that.firstName) && lastName.equals(that.lastName) && cpf.equals(that.cpf) && address.equals(that.address) && gender.equals(that.gender);
+        StudentVO studentVO = (StudentVO) o;
+        return id.equals(studentVO.id) && firstName.equals(studentVO.firstName) && lastName.equals(studentVO.lastName) && cpf.equals(studentVO.cpf) && address.equals(studentVO.address) && gender.equals(studentVO.gender);
     }
 
     @Override
