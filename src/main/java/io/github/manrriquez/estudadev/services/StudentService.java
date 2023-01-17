@@ -22,4 +22,5 @@ public class StudentService {
         logger.info("Listando todos estudantes cadastrados..");
         return ModelMapper.parseListObjects(studentRepository.findAll(), StudentVO.class);
     }
+
 }

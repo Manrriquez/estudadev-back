@@ -19,7 +19,8 @@ public class StudentController {
     private StudentService studentService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<StudentVO> findAll() {
+    public List<StudentVO> findAll() throws Exception{
         return studentService.findAll();
     }
+
 }
