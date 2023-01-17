@@ -44,6 +44,10 @@ public class StudentService {
         logger.info("Atualizando Entidade Pessoa..");
         var entity = studentRepository.findById(person.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("ID estudante não encontrado, tente novamente."));
+        entity.setFirstName(person.getFirstName());
+        entity.setLastName(person.getLastName());
+        entity.setAddress(person.getAddress());
+        entity.setGender(person.getGender());
         var vo = ModelMapper.parseObject(studentRepository.save(entity), StudentVO.class);
         return vo;
     }
