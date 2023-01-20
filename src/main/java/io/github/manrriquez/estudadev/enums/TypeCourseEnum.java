@@ -1,2 +1,7 @@
-package io.github.manrriquez.estudadev.enums;public class TypeCourseEnum {
+package io.github.manrriquez.estudadev.enums;
+
+public enum TypeCourseEnum {
+
+    FRONTEND,
+    BACKEND;
 }
