@@ -1,11 +1,10 @@
 package io.github.manrriquez.estudadev.models;
 
-
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import javax.persistence.*;
 
 @Data
 @RequiredArgsConstructor
@@ -23,4 +22,8 @@ public class VideoModel {
     private String video_url;
     @Column
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private CourseModel courses;
 }

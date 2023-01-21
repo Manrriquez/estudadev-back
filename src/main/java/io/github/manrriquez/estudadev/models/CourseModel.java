@@ -1,11 +1,11 @@
 package io.github.manrriquez.estudadev.models;
 
-import io.github.manrriquez.estudadev.enums.TypeCourseEnum;
+import io.github.manrriquez.estudadev.enums.CategoryEnum;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import javax.persistence.*;
 import java.util.List;
 
 
@@ -27,9 +27,8 @@ public class CourseModel {
     private String image_location;
     @Column
     @Enumerated(EnumType.STRING)
-    private TypeCourseEnum category;
-    @OneToMany
-    @JoinColumn(name = "video_id")
-    private List<VideoModel> videos;
+    private CategoryEnum category;
 
+    @OneToMany(mappedBy = "courses", cascade = CascadeType.ALL)
+    private List<VideoModel> videos;
 }
