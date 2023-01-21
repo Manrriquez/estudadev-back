@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
+import static jakarta.persistence.GenerationType.*;
+
 
 @Data
 @RequiredArgsConstructor
@@ -15,9 +17,8 @@ import java.util.List;
 @Entity
 @Table(name = "TB_COURSE")
 public class CourseModel {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
     @Column
     private String title;
@@ -28,7 +29,9 @@ public class CourseModel {
     @Column
     @Enumerated(EnumType.STRING)
     private CategoryEnum category;
-
-    @OneToMany(mappedBy = "courses", cascade = CascadeType.ALL)
+    @ManyToOne()
+    @JoinColumn(name = "student_id")
+    private StudentModel  student;
+    @OneToMany(mappedBy = "course")
     private List<VideoModel> videos;
 }

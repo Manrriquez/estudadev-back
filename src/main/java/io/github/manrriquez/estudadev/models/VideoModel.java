@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import static jakarta.persistence.GenerationType.IDENTITY;
+
 
 @Data
 @RequiredArgsConstructor
@@ -12,9 +14,8 @@ import lombok.RequiredArgsConstructor;
 @Entity
 @Table(name = "TB_VIDEO")
 public class VideoModel {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
     @Column
     private String title;
@@ -22,8 +23,7 @@ public class VideoModel {
     private String video_url;
     @Column
     private String description;
-
     @ManyToOne
     @JoinColumn(name = "course_id")
-    private CourseModel courses;
+    private CourseModel course;
 }

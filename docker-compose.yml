@@ -1,38 +1,38 @@
 version: '3.9'
 services:
-    db:
-      image: mysql:8.0.29
-      command: mysqld --default-authentication-plugin=mysql_native_password
-      restart: always
-      environment:
-        TZ: America/Sao_Paulo
-        MYSQL_ROOT_PASSWORD: admin1233
-        MYSQL_USER: docker
-        MYSQL_PASSWORD: admin123
-        MYSQL_DATABASE: estudadevdb
-        MYSQL_ROOT_HOST: '%'
-        MYSQL_TCP_PORT: 3308
-      ports:
-        - "33308:3308"
-      expose:
-        - 33308
-      networks:
-        - manrriquez-network
-    estudadev:
-        image: manrriquez/estudadev
-        restart: always
-        environment:
-          TZ: America/Sao_Paulo
-          SPRING.DATASOURCE.URL: jdbc:mysql://db:3308/estudadevdb?allowPublicKeyRetrieval=true&rewriteBatchedStatements=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8&useLegacyDatetimeCode=true&createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
-          SPRING.DATASOURCE.USERNAME: root
-          SPRING.DATASOURCE.PASSWORD: admin12
-        ports:
-          - "8080:8080"
-        command: mvn spring-boot:run
-        depends_on:
-          - db
-        networks:
-          - manrriquez-network
+  db:
+    image: mysql:8.0.29
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      TZ: America/Sao_Paulo
+      MYSQL_ROOT_PASSWORD: admin1233
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: admin123
+      MYSQL_DATABASE: estudadevdb
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_TCP_PORT: 3308
+    ports:
+      - "33308:3308"
+    expose:
+      - 33308
+    networks:
+      - manrriquez-network
+  estudadev:
+    image: manrriquez/estudadev
+    restart: always
+    environment:
+      TZ: America/Sao_Paulo
+      SPRING.DATASOURCE.URL: jdbc:mysql://db:3308/estudadevdb?allowPublicKeyRetrieval=true&rewriteBatchedStatements=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8&useLegacyDatetimeCode=true&createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
+      SPRING.DATASOURCE.USERNAME: root
+      SPRING.DATASOURCE.PASSWORD: admin12
+    ports:
+      - "8080:8080"
+    command: mvn spring-boot:run
+    depends_on:
+      - db
+    networks:
+      - manrriquez-network
 networks:
   manrriquez-network:
     driver: bridge
